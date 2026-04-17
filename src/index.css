@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 44% 7%;
+    --foreground: 154 78% 94%;
+    --primary: 270 87% 66%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 264 42% 15%;
+    --secondary-foreground: 154 78% 94%;
+    --muted: 262 38% 13%;
+    --muted-foreground: 152 34% 72%;
+    --accent: 151 82% 48%;
+    --accent-foreground: 260 48% 8%;
+    --card: 262 39% 11%;
+    --card-foreground: 154 78% 94%;
+    --popover: 262 41% 10%;
+    --popover-foreground: 154 78% 94%;
+    --border: 267 42% 24%;
+    --input: 267 42% 24%;
+    --ring: 151 82% 48%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --radius: 0.5rem;
+    --sidebar-background: 262 38% 10%;
+    --sidebar-foreground: 154 78% 94%;
+    --sidebar-primary: 270 87% 66%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 262 37% 16%;
+    --sidebar-accent-foreground: 154 78% 94%;
+    --sidebar-border: 267 42% 24%;
+    --sidebar-ring: 151 82% 48%;
+
+    --hero-pointer-x: 50%;
+    --hero-pointer-y: 45%;
+    
+    --brand-purple-light: 262 100% 72%;
+    --brand-purple: 262 83% 58%;
+    --brand-purple-dark: 262 62% 38%;
+    --brand-green-light: 150 67% 54%;
+    --brand-green: 150 67% 41%;
+    --brand-green-dark: 150 60% 28%;
+    --brand-cyan: 186 86% 52%;
+    --brand-cyan-light: 186 86% 70%;
+  }
+
+  .dark {
+    --background: 235 28% 10%;
+    --foreground: 0 0% 98%;
+    --primary: 262 83% 64%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 256 30% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 22% 18%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 150 67% 48%;
+    --accent-foreground: 0 0% 98%;
+    --card: 235 28% 14%;
+    --card-foreground: 0 0% 98%;
+    --popover: 235 28% 14%;
+    --popover-foreground: 0 0% 98%;
+    --border: 240 16% 24%;
+    --input: 240 16% 24%;
+    --ring: 150 67% 48%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --sidebar-background: 235 28% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 262 83% 64%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 20% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 16% 24%;
+    --sidebar-ring: 150 67% 48%;
+  }
+
+  * {
+    @apply border-border;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+    background-image:
+      radial-gradient(circle at 10% 12%, hsl(var(--primary) / 0.2), transparent 30%),
+      radial-gradient(circle at 86% 14%, hsl(var(--accent) / 0.18), transparent 34%),
+      linear-gradient(145deg, hsl(262 45% 8%), hsl(258 42% 10%) 35%, hsl(266 50% 8%) 65%, hsl(258 47% 7%));
+    background-attachment: fixed;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, .retro-title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  button, a, input, textarea, select {
+    transition: all 0.2s;
+  }
+
+  @keyframes flowWave {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(-25%) translateY(-5%);
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  @keyframes flowWaveReverse {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(25%) translateY(5%);
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes depthPulse {
+    0%, 100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  .hero-animated-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  @keyframes retroWaveDrift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(-6%, 3%, 0) scale(1.08);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes retroWaveDriftReverse {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(7%, -4%, 0) scale(1.06);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes scanlineShift {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 180px;
+    }
+  }
+
+  @keyframes neonBreathe {
+    0%, 100% {
+      opacity: 0.55;
+      filter: saturate(1) brightness(1);
+    }
+    50% {
+      opacity: 0.82;
+      filter: saturate(1.2) brightness(1.16);
+    }
+  }
+
+  .retro-hero-shell {
+    --hero-pointer-x: 50%;
+    --hero-pointer-y: 45%;
+  }
+
+  .hero-layer-base,
+  .hero-layer-grid,
+  .hero-layer-wave-one,
+  .hero-layer-wave-two,
+  .hero-layer-wave-three,
+  .hero-layer-pointer,
+  .hero-layer-vignette {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-layer-base {
+    background:
+      radial-gradient(circle at 12% 18%, hsl(var(--primary) / 0.32), transparent 35%),
+      radial-gradient(circle at 84% 14%, hsl(var(--accent) / 0.28), transparent 36%),
+      linear-gradient(130deg, hsl(262 58% 9%) 0%, hsl(270 52% 12%) 38%, hsl(260 48% 9%) 72%, hsl(152 62% 10%) 100%);
+  }
+
+  .hero-layer-grid {
+    background-image:
+      linear-gradient(hsl(var(--accent) / 0.11) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.14) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(circle at 50% 35%, black 20%, transparent 90%);
+    opacity: 0.6;
+    animation: flowWave 16s ease-in-out infinite;
+  }
+
+  .hero-layer-wave-one {
+    background:
+      radial-gradient(120% 80% at 0% 100%, hsl(var(--primary) / 0.38), transparent 70%),
+      radial-gradient(95% 65% at 95% 0%, hsl(var(--accent) / 0.3), transparent 65%);
+    mix-blend-mode: screen;
+    animation: retroWaveDrift 22s ease-in-out infinite;
+  }
+
+  .hero-layer-wave-two {
+    background:
+      radial-gradient(100% 64% at 30% 80%, hsl(var(--primary) / 0.4), transparent 70%),
+      radial-gradient(130% 76% at 80% 55%, hsl(var(--accent) / 0.27), transparent 68%);
+    mix-blend-mode: screen;
+    animation: retroWaveDriftReverse 18s ease-in-out infinite;
+  }
+
+  .hero-layer-wave-three {
+    background:
+      repeating-linear-gradient(
+        -14deg,
+        transparent 0,
+        transparent 18px,
+        hsl(var(--primary) / 0.06) 18px,
+        hsl(var(--primary) / 0.06) 25px
+      );
+    animation: neonBreathe 9s ease-in-out infinite;
+  }
+
+  .hero-layer-pointer {
+    background:
+      radial-gradient(
+        circle at var(--hero-pointer-x) var(--hero-pointer-y),
+        hsl(var(--accent) / 0.34) 0%,
+        hsl(var(--primary) / 0.24) 25%,
+        transparent 48%
+      );
+    filter: blur(2px);
+    transition: background-position 0.15s ease-out;
+  }
+
+  .hero-layer-vignette {
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 2px,
+        hsl(0 0% 100% / 0.03) 3px,
+        transparent 4px
+      ),
+      radial-gradient(circle at 50% 40%, transparent 15%, hsl(262 58% 5% / 0.58) 76%);
+    animation: scanlineShift 12s linear infinite;
+    pointer-events: none;
+  }
+
+  .retro-bio-card {
+    background:
+      linear-gradient(155deg, hsl(var(--card) / 0.92), hsl(263 40% 10% / 0.9) 55%, hsl(153 48% 13% / 0.92));
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2), 0 24px 48px hsl(262 70% 6% / 0.45);
+  }
+
+  .tech-glow {
+    background: radial-gradient(circle at top left, hsl(var(--brand-purple-light) / 0.35), transparent 35%), radial-gradient(circle at top right, hsl(var(--brand-green-light) / 0.3), transparent 30%), linear-gradient(135deg, hsl(var(--background)), hsl(var(--background)));
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+  }
+}
